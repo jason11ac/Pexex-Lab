@@ -1,0 +1,85 @@
+~~~~~~~~~~~~~~~~~~~~
+Part 3: Answers.txt
+~~~~~~~~~~~~~~~~~~~~
+
+
+1. Explain why the instructions in the trace did not produce the correct mathematical result. Which instructions caused the problem, exactly?
+
+	
+	The third imul instruction results in underflow as the three parameters multiplied together are less than LONG_MIN.
+
+	actual line: 0x00000000005437c8 <arith_driver+712>data.c:2645	imul   %rdi,%rbp		rbp = 0xb38e48c71bd31c6f
+
+
+
+
+
+
+
+2. Explain why the shell command emacs -batch -eval '(print most-positive-fixnum)' outputs 2305843009213693951. Where did the number 2305843009213693951 come from? Explain in terms of the Emacs source code.
+
+	
+	The value most-positive-fixnum is defined on line 692 in lisp.h and is created by computing: EMACS_INT_MAX >> INTTYPEBITS (number of int type bits).
+
+
+
+
+
+
+
+3. Explain why the shell command emacs -batch -eval '(print (* most-positive-fixnum most-positive-fixnum))' outputs only 1.
+
+	
+	Multiplying the most-positive-fixnum by itself causes overflow and the makes the value 1. This overflow equaling 1 also happens for MAX_LONG as Emacs just has a different max long value than limits.h does.
+
+
+
+
+
+
+
+4. The Emacs executable was compiled with GCC's -O2 option. Suppose it had also been compiled with -fsanitize=undefined. Explain any problems the trace would run into, or if there would not be a problem explain why not.
+
+
+	After testing a program of my own where overflow occured, with the fsanitize=undefined flag, it evaluated the overflow in its own way, (different than the O2 test) but it also gave me a run-time overflow error. I then used gdb and traced through the program and saw the jumps for overflow detection, which was expected of fsanitize=undefined. My mini test trace with overflow used libraries for overflow handling and I am not sure that Emacs would be able to do this, leading to possible problems.
+
+
+
+
+
+
+
+
+5. Similarly, discuss whether and how -fwrapv would have caused problems.
+
+	
+	Using -fwrapv would not cause problems because emacs converts signed values to unsigned values. Wrap semantics does not account for problems with unsigned values, therefore using -fwrapv would be fine in this case.
+
+
+
+
+
+
+
+
+6. Suppose we assume -fwrapv is used. Suggest changes to how Emacs does integer multiplication that should help improve its performance. Focus on integer multiplication; don't alter the machinery Emacs uses to decide which flavor of multiplication to do.
+
+
+	In our Emacs executable with O2 optimization, Emacs itself checks for overflow everytime an operation is completed. Checking for overflow is expensive, so instead, Emacs should be altered to let wrapv check for overflow when called. 
+
+
+
+
+
+
+
+
+7. How significant are the efficiency differences discussed above, in the context of Emacs execution?
+
+	
+	The efficiency differences are quite significant since checking for overflow is usually pretty expensive and inefficient. This difference in efficiency can be seen by comparing the three tests in part 2 of the lab, examine integer overflow handling. The first test (straight O2 optimization) is substantially faster and more efficient than the other two tests. 
+
+
+
+
+
