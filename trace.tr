@@ -1,0 +1,151 @@
+0x00000000005438c0 <Ftimes+0>data.c:2767	mov    %rsi,%rdx	rdx = rsi = 0x7fffffffd840  
+0x00000000005438c3 <Ftimes+3>data.c:2768	mov    %rdi,%rsi	rsi = rdi = 0x3 
+0x00000000005438c6 <Ftimes+6>data.c:2768	mov    $0x2,%edi	edi/rdi = 0x2
+0x00000000005438cb <Ftimes+11>data.c:2768	jmpq   0x543500 <arith_driver>
+0x0000000000543500 <arith_driver+0>data.c:2577	push   %r15	M[0x7fffffffd838] = 0xbab772 	rsp = 0x7fffffffd838
+0x0000000000543502 <arith_driver+2>data.c:2577	push   %r14	M[0x7fffffffd830] = 0x7fffffffd840 	  rsp = 0x7fffffffd830	
+0x0000000000543504 <arith_driver+4>data.c:2577	push   %r13	M[0x7fffffffd828] = 0x180 	 rsp = 0x7fffffffd828
+0x0000000000543506 <arith_driver+6>data.c:2577	push   %r12	M[0x7fffffffd820] = 0xafa950 	rsp = 0x7fffffffd820
+0x0000000000543508 <arith_driver+8>data.c:2577	push   %rbp	M[0x7fffffffd818] = 0x7fffffffd910 	   rsp = 0x7fffffffd818
+0x0000000000543509 <arith_driver+9>data.c:2577	push   %rbx	M[0x7fffffffd810] = 0x7fffffffd858     rsp = 0x7fffffffd810
+0x000000000054350a <arith_driver+10>data.c:2577	mov    $0x1,%ebp	ebp/rbp = 0x1
+0x000000000054350f <arith_driver+15>data.c:2577	sub    $0x18,%rsp	rsp = 0x7fffffffd7f0
+0x0000000000543513 <arith_driver+19>data.c:2584	cmp    $0x2,%edi
+0x0000000000543516 <arith_driver+22>data.c:2584	je     0x543525 <arith_driver+37>
+0x0000000000543525 <arith_driver+37>data.c:2602	test   %rsi,%rsi		
+0x0000000000543528 <arith_driver+40>data.c:2602	jle    0x5436ab <arith_driver+427>
+0x000000000054352e <arith_driver+46>data.c:2602	mov    %rdx,%r15	r15 = 0x7fffffffd840
+0x0000000000543531 <arith_driver+49>data.c:2602	mov    %rsi,%r13	r13 = 0x3
+0x0000000000543534 <arith_driver+52>data.c:2602	mov    %edi,%r14d	r14d = 0x2
+0x0000000000543537 <arith_driver+55>data.c:2602	mov    %rbp,%r11	r11 = 0x1
+0x000000000054353a <arith_driver+58>data.c:2602	xor    %ecx,%ecx	ecx = 0x0
+0x000000000054353c <arith_driver+60>data.c:2602 	xor    %ebx,%ebx	ebx = 0x0
+0x000000000054353e <arith_driver+62>data.c:2602	xor    %r12d,%r12d	r12d = 0x0
+0x0000000000543541 <arith_driver+65>data.c:2611	mov    (%r15,%rbx,8),%rdi	rdi = (8 * 0) + r15 = 0x6d54
+0x0000000000543545 <arith_driver+69>data.c:703	mov    %edi,%eax	eax/rax = 0x6d54
+0x0000000000543547 <arith_driver+71>data.c:703	mov    %edi,%esi	esi/rsi = 0x6d54
+0x0000000000543549 <arith_driver+73>data.c:703	and    $0x7,%eax	rax = 0x4
+0x000000000054354c <arith_driver+76>lisp.h:2384	cmp    $0x3,%eax		
+0x000000000054354f <arith_driver+79>lisp.h:2384	je     0x5435cf <arith_driver+207>
+0x0000000000543551 <arith_driver+81>lisp.h:2384	nopl   0x0(%rax)
+0x0000000000543558 <arith_driver+88>data.c:2612	test   $0x3,%dil
+0x000000000054355c <arith_driver+92>data.c:2612	mov    0x634b35(%rip),%rdx  		# 0xb78098	rdx = 0xbb8902
+0x0000000000543563 <arith_driver+99>data.c:2612	je     0x54356e <arith_driver+110>
+0x0000000000543565 <arith_driver+101>data.c:2612	cmp    $0x7,%eax
+0x0000000000543568 <arith_driver+104>data.c:2612	jne    0x5435f0 <arith_driver+240>
+0x0000000000543577 <arith_driver+119>data.c:2617	mov    %rdi,(%r15,%rbx,8)	M[0x7fffffffd840] = 0x6d54
+0x000000000054357b <arith_driver+123>lisp.h:701	sar    $0x2,%rdi	rdi =  0x1b55
+0x000000000054357f <arith_driver+127>data.c:2619	cmp    $0x8,%r14d
+0x0000000000543583 <arith_driver+131>data.c:2619	ja     0x5435a8 <arith_driver+168>
+0x0000000000543585 <arith_driver+133>data.c:2619	mov    %r14d,%eax	eax/rax = 0x2
+0x0000000000543588 <arith_driver+136>data.c:2619	jmpq   *0x5ec2a0(,%rax,8)
+0x000000000054358f <arith_driver+143>data.c:2619	nop
+0x0000000000543600 <arith_driver+256>data.c:2638	test   %rdi,%rdi			
+0x0000000000543603 <arith_driver+259>data.c:2638	js     0x5437d8 <arith_driver+728>
+0x0000000000543609 <arith_driver+265>data.c:2638	je     0x5437c8 <arith_driver+712>
+0x000000000054360f <arith_driver+271>data.c:2638	test   %rbp,%rbp
+0x0000000000543612 <arith_driver+274>data.c:2638	js     0x543838 <arith_driver+824>
+0x0000000000543618 <arith_driver+280>data.c:2638	movabs $0x7fffffffffffffff,%rax	rax = 0x7fffffffffffffff
+0x0000000000543622 <arith_driver+290>data.c:2638	cqto	rdx = 0x0
+0x0000000000543624 <arith_driver+292>data.c:2638	idiv   %rdi	rdx = 0x8a4 rax = 0x4aee2e9caa7ef
+0x0000000000543627 <arith_driver+295>data.c:2638	cmp    %rbp,%rax			
+0x000000000054362a <arith_driver+298>data.c:2638	setl   %al	rax = 0x4aee2e9caa700
+0x000000000054362d <arith_driver+301>data.c:2638	test   %al,%al
+0x000000000054362f <arith_driver+303>data.c:2638	je     0x5437c8 <arith_driver+712>
+0x00000000005437c8 <arith_driver+712>data.c:2645	imul   %rdi,%rbp	rbp = 0x1b55
+0x00000000005437cc <arith_driver+716>data.c:2645	jmpq   0x5435a8 <arith_driver+168>
+0x00000000005437d1 <arith_driver+721>data.c:2645	nopl   0x0(%rax)
+0x00000000005435a8 <arith_driver+168>data.c:2602	add    $0x1,%rbx	rbx = 0x1
+0x00000000005435ac <arith_driver+172>data.c:2602	cmp    %rbx,%r13				
+0x00000000005435af <arith_driver+175>data.c:2602	je     0x5436ab <arith_driver+427>
+0x00000000005435b5 <arith_driver+181>data.c:2611	mov    (%r15,%rbx,8),%rdi	rdi = 0xfffff00001000004
+0x00000000005435b9 <arith_driver+185>data.c:2611	test   %cl,%cl 						
+0x00000000005435bb <arith_driver+187>data.c:2611	cmove  %rbp,%r11	r11 = 0x1b55, condition was true
+0x00000000005435bf <arith_driver+191>data.c:2611	cmove  %rbx,%r12 	r12 = 0x1, condition was true
+0x00000000005435c3 <arith_driver+195>data.c:703	mov    %edi,%eax	eax/rax = 0x1000004
+0x00000000005435c5 <arith_driver+197>data.c:703	mov    %edi,%esi 	esi/rsi = 0x1000004
+0x00000000005435c7 <arith_driver+199>data.c:703	and    $0x7,%eax	eax/rax = 0x4
+0x00000000005435ca <arith_driver+202>lisp.h:2384	cmp    $0x3,%eax
+0x00000000005435cd <arith_driver+205>lisp.h:2384	jne    0x543558 <arith_driver+88>
+0x00000000005435cf <arith_driver+207>lisp.h:2384	cmpw   $0x5eac,-0x3(%rdi)
+0x00000000005435d5 <arith_driver+213>lisp.h:2384	je     0x543770 <arith_driver+624>
+0x0000000000543558 <arith_driver+88>data.c:2612	test   $0x3,%dil
+0x000000000054355c <arith_driver+92>data.c:2612	mov    0x634b35(%rip),%rdx        # 0xb78098	rdx = 0xbb8902
+0x0000000000543563 <arith_driver+99>data.c:2612	je     0x54356e <arith_driver+110>
+0x0000000000543565 <arith_driver+101>data.c:2612	cmp    $0x7,%eax
+0x0000000000543568 <arith_driver+104>data.c:2612	jne    0x5435f0 <arith_driver+240>
+0x000000000054356e <arith_driver+110>data.c:2614	cmp    $0x7,%eax
+0x0000000000543571 <arith_driver+113>data.c:2614	je     0x54379c <arith_driver+668>
+0x0000000000543577 <arith_driver+119>data.c:2617	mov    %rdi,(%r15,%rbx,8)	M[0x7fffffffd848] = 0xfffff00001000004
+0x000000000054357b <arith_driver+123>lisp.h:701	sar    $0x2,%rdi	rdi = 0xfffffc0000400001
+0x000000000054357f <arith_driver+127>data.c:2619	cmp    $0x8,%r14d
+0x0000000000543583 <arith_driver+131>data.c:2619	ja     0x5435a8 <arith_driver+168>
+0x0000000000543585 <arith_driver+133>data.c:2619	mov    %r14d,%eax	eax/rax = 0x2
+0x0000000000543588 <arith_driver+136>data.c:2619	jmpq   *0x5ec2a0(,%rax,8)
+0x000000000054358f <arith_driver+143>data.c:2619	nop
+0x0000000000543600 <arith_driver+256>data.c:2638	test   %rdi,%rdi
+0x0000000000543603 <arith_driver+259>data.c:2638	js     0x5437d8 <arith_driver+728>
+0x0000000000543609 <arith_driver+265>data.c:2638	je     0x5437c8 <arith_driver+712>
+0x000000000054360f <arith_driver+271>data.c:2638	test   %rbp,%rbp
+0x0000000000543612 <arith_driver+274>data.c:2638	js     0x543838 <arith_driver+824>
+0x0000000000543618 <arith_driver+280>data.c:2638	movabs $0x8000000000000000,%rax	rax = 0x8000000000000000
+0x0000000000543622 <arith_driver+290>data.c:2638	cqto	rdx = 0xffffffffffffffff
+0x0000000000543624 <arith_driver+292>data.c:2638	idiv   %rdi	rdx = 0xffffffffff5ffffe rax = 0x200002
+0x0000000000543627 <arith_driver+295>data.c:2638	cmp    %rbp,%rax
+0x000000000054362a <arith_driver+298>data.c:2638	setl   %al	rax = 0x200000
+0x000000000054362d <arith_driver+301>data.c:2638	test   %al,%al
+0x000000000054362f <arith_driver+303>data.c:2638	je     0x5437c8 <arith_driver+712>
+0x00000000005437c8 <arith_driver+712>data.c:2645	imul   %rdi,%rbp	rbp = 0xff92ac06d5401b55
+0x00000000005437cc <arith_driver+716>data.c:2645	jmpq   0x5435a8 <arith_driver+168>
+0x00000000005437d1 <arith_driver+721>data.c:2645	nopl   0x0(%rax)
+0x00000000005435a8 <arith_driver+168>data.c:2602	add    $0x1,%rbx	rbx = 0x2
+0x00000000005435ac <arith_driver+172>data.c:2602	cmp    %rbx,%r13						
+0x00000000005435af <arith_driver+175>data.c:2602	je     0x5436ab <arith_driver+427>
+0x00000000005435b5 <arith_driver+181>data.c:2611	mov    (%r15,%rbx,8),%rdi	rdi = 0x2cc	
+0x00000000005435b9 <arith_driver+185>data.c:2611	test   %cl,%cl
+0x00000000005435bb <arith_driver+187>data.c:2611	cmove  %rbp,%r11	r11 = 0xff92ac06d5401b55, condition was true
+0x00000000005435bf <arith_driver+191>data.c:2611	cmove  %rbx,%r12 	r12 = 0x2, condition was true
+0x00000000005435c3 <arith_driver+195>data.c:703	mov    %edi,%eax	eax/rax = 0x2cc
+0x00000000005435c5 <arith_driver+197>data.c:703	mov    %edi,%esi 	esi/rsi = 0x2cc
+0x00000000005435c7 <arith_driver+199>data.c:703	and    $0x7,%eax	eax/rax = 0x4
+0x00000000005435ca <arith_driver+202>lisp.h:2384	cmp    $0x3,%eax			
+0x00000000005435cd <arith_driver+205>lisp.h:2384	jne    0x543558 <arith_driver+88>
+0x0000000000543558 <arith_driver+88>data.c:2612	test   $0x3,%dil			
+0x000000000054355c <arith_driver+92>data.c:2612	mov    0x634b35(%rip),%rdx        # 0xb78098	rdx = 0xbb8902
+0x0000000000543563 <arith_driver+99>data.c:2612	je     0x54356e <arith_driver+110>
+0x000000000054356e <arith_driver+110>data.c:2614	cmp    $0x7,%eax
+0x0000000000543571 <arith_driver+113>data.c:2614	je     0x54379c <arith_driver+668>
+0x0000000000543577 <arith_driver+119>data.c:2617	mov    %rdi,(%r15,%rbx,8)	M[0x7fffffffd850] = 0x2cc
+0x000000000054357b <arith_driver+123>lisp.h:701	sar    $0x2,%rdi	rdi = 0xb3
+0x000000000054357f <arith_driver+127>data.c:2619	cmp    $0x8,%r14d
+0x0000000000543583 <arith_driver+131>data.c:2619	ja     0x5435a8 <arith_driver+168>
+0x0000000000543585 <arith_driver+133>data.c:2619	mov    %r14d,%eax	eax/rax = 0x2
+0x0000000000543588 <arith_driver+136>data.c:2619	jmpq   *0x5ec2a0(,%rax,8)
+0x0000000000543600 <arith_driver+256>data.c:2638	test   %rdi,%rdi
+0x0000000000543603 <arith_driver+259>data.c:2638	js     0x5437d8 <arith_driver+728>
+0x0000000000543609 <arith_driver+265>data.c:2638	je     0x5437c8 <arith_driver+712>
+0x000000000054360f <arith_driver+271>data.c:2638	test   %rbp,%rbp
+0x0000000000543612 <arith_driver+274>data.c:2638	js     0x543838 <arith_driver+824>
+0x0000000000543838 <arith_driver+824>data.c:2638	movabs $0x8000000000000000,%rax	rax = 0x8000000000000000
+0x0000000000543842 <arith_driver+834>data.c:2638	cqto	rdx = 0xffffffffffffffff
+0x0000000000543844 <arith_driver+836>data.c:2638	idiv   %rdi	rdx = 0xffffffffffffffc2 rax = 0xff48f044a5e641ca
+0x0000000000543847 <arith_driver+839>data.c:2638	cmp    %rbp,%rax					
+0x000000000054384a <arith_driver+842>data.c:2638	setg   %al	rax = 0xff48f044a5e64100
+0x000000000054384d <arith_driver+845>data.c:2638	jmpq   0x54362d <arith_driver+301>
+0x000000000054362d <arith_driver+301>data.c:2638	test   %al,%al
+0x000000000054362f <arith_driver+303>data.c:2638	je     0x5437c8 <arith_driver+712>
+0x00000000005437c8 <arith_driver+712>data.c:2645	imul   %rdi,%rbp	rbp = 0xb38e48c71bd31c6f
+0x00000000005437cc <arith_driver+716>data.c:2645	jmpq   0x5435a8 <arith_driver+168>
+0x00000000005435a8 <arith_driver+168>data.c:2602	add    $0x1,%rbx	rbx = 0x3
+0x00000000005435ac <arith_driver+172>data.c:2602	cmp    %rbx,%r13
+0x00000000005435af <arith_driver+175>data.c:2602	je     0x5436ab <arith_driver+427>
+0x00000000005436ab <arith_driver+427>data.c:2679	add    $0x18,%rsp	rsp = 0x7fffffffd808
+0x00000000005436af <arith_driver+431>lisp.h:700	lea    0x0(,%rbp,4),%rax	rax = 0xce39231c6f4c71bc
+0x00000000005436b7 <arith_driver+439>data.c:2679	pop    %rbx	rsp = 0x7fffffffd808  rbx = 0x7fffffffd858		
+0x00000000005436b8 <arith_driver+440>data.c:2679	pop    %rbp	rsp = 0x7fffffffd810  rbp = 0x7fffffffd910
+0x00000000005436b9 <arith_driver+441>data.c:2679	pop    %r12 	rsp = 0x7fffffffd818  r12 = 0xafa950
+0x00000000005436bb <arith_driver+443>data.c:2679	pop    %r13	rsp = 0x7fffffffd820  r13 = 0x180
+0x00000000005436bd <arith_driver+445>data.c:2679	pop    %r14 	rsp = 0x7fffffffd828  r14 = 0x7fffffffd840
+0x00000000005436bf <arith_driver+447>data.c:2679 	pop    %r15	rsp = 0x7fffffffd830  r15 = 0xbab772
+0x00000000005436c1 <arith_driver+449>data.c:2679	retq	rsp = 0x7fffffffd840
+0x00000000005436c2 <arith_driver+450>data.c:2679	nopw   0x0(%rax,%rax,1)
