@@ -1,0 +1,107 @@
+~~~~~~~~~~~~~~~~~~~~
+Part 2: Testovf.txt
+~~~~~~~~~~~~~~~~~~~~
+
+Function:
+
+#include <limits.h>
+#include <stdbool.h>
+
+long big = LONG_MAX;
+ 
+bool testovf (void)
+{
+   return big + LONG_MAX < big;
+}
+
+From a first glance we can see that using just O2 uses far less machine operations than the other two. 
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Run program with optimization O2: 
+
+   0:	31 c0                	xor    %eax,%eax
+   2:	c3                   	retq   
+
+In this optimization, the program sets eax to either 1 or 0 based on LONG_MAX + big < big.
+But either way xor-ing eax with itself will return 0. So this code just returns 0 because the compiler reads the 
+operation and doesn't register the overflow that occurs, therefore, assuming LONG_MAX + big < big is obviously false 
+no matter what big is.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+2. Run program with optimization O2 and -fsanitize=undefined:
+
+   0:	55                   	push   %rbp
+   1:	53                   	push   %rbx
+   2:	48 ba ff ff ff ff ff 	movabs $0x7fffffffffffffff,%rdx
+   9:	ff ff 7f 
+   c:	48 83 ec 08          	sub    $0x8,%rsp
+  10:	48 8b 1d 00 00 00 00 	mov    0x0(%rip),%rbx        # 17 <testovf+0x17>
+  17:	48 89 dd             	mov    %rbx,%rbp
+  1a:	48 01 d5             	add    %rdx,%rbp
+  1d:	70 0d                	jo     2c <testovf+0x2c>
+  1f:	48 39 eb             	cmp    %rbp,%rbx
+  22:	0f 9f c0             	setg   %al
+  25:	48 83 c4 08          	add    $0x8,%rsp
+  29:	5b                   	pop    %rbx
+  2a:	5d                   	pop    %rbp
+  2b:	c3                   	retq   
+  2c:	48 89 de             	mov    %rbx,%rsi
+  2f:	bf 00 00 00 00       	mov    $0x0,%edi
+  34:	e8 00 00 00 00       	callq  39 <testovf+0x39>
+  39:	eb e4                	jmp    1f <testovf+0x1f>
+
+The flag fsanitize=undefined first checks your whole code for undefined behavior before executing anything 
+at a small runtime cost. This code does that by first putting the arguments big and LONG_MAX into rbx and rdx 
+and testing for overflow. If overflow doesn't occur, it just executes normally, but if overflow does occur, the 
+code adjusts by changing the argument registers rsi and rdi before calling the function again. 
+
+
+In this code, LONG_MAX is put into register %rdx and LONG_MAX + big is put into %rbp. The compiler checks for 
+overflow by using the jo instruction, which jumps to line 2c if the overflow flag is set in the add %rdx, %rbp 
+instruction. If the code jumps, big (rbx) is set to 0 and the al register is set to 8 zeros as the function returns 
+false because rbx (0) is not greater than rbp (LONG_MAX). The function then decrements the stack pointer and pops the 
+two values in rbx and rbp off the stack before returning.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+3. Run program with optimization O2 and -fwrapv:
+
+   0:	48 8b 15 00 00 00 00 	mov    0x0(%rip),%rdx        # 7 <testovf+0x7>
+   7:	48 b8 ff ff ff ff ff 	movabs $0x7fffffffffffffff,%rax
+   e:	ff ff 7f 
+  11:	48 01 d0             	add    %rdx,%rax
+  14:	48 39 c2             	cmp    %rax,%rdx
+  17:	0f 9f c0             	setg   %al
+  1a:	c3                   	retq   
+
+In this optimization, we use O2 and wrapv semantics. Like in the second test, big is recieved using 0x0(%rip). 
+Big is put into register rdx and LONG_MAX is put into rax, the return register. This code simply adds the two together 
+but uses wrap semantics to calculate an answer that wraps any overflow bits to the least significant spots. The answer 
+is deposited into rax. Then it compares rax and rdx logically like in the source code before setting al to 1 or 0. The 
+function then returns. 
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Similarities and Differences
+
+Tests 2 and 3 are actually quite similar in that they do essentially the same thing, but test 2 has a different set of 
+instructions, that is jumped to, to deal with overflow and test 3 uses simple wrap semantics to deal with overflow. Tests 
+2 and 3 are quite different than test 1 as test 1 does not even check for overflow as the compiler reads big + LONG_MAX < big 
+as obviously false. 
+
+
+
+
+
+
+
+
+
+
+
