@@ -1,6 +1,14 @@
 # Pexex-Lab
 Program Execution Explorer lab
 
+~~~~~
+Goal:
+~~~~~
+
+The goal of this lab is to see that a debugger like GDB is better thought of as a way of exploring program execution histories than merely as a debugger.
+
+Although the GNU Emacs text editor is not intended for high performance numeric computation, its scripting language Elisp is reasonably widely used and Elisp applications need adequate (if not stellar) performance for numeric applications. One such application, GNU Calc, is a desk calculator that does a lot of arithmetic internally. My goal is to see how much overhead is imposed by Emacs when doing standard arithmetic operations, in particular multiplication with integer arguments, and to think about how to reduce the arithmetic overhead.
+
 ~~~~~~~~~~
 Pexex Lab
 ~~~~~~~~~~
